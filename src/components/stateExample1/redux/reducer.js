@@ -5,7 +5,7 @@ import * as types from './actionTypes'
 export default (val=
   {
     show: true,
-    pending: false,
+    isData: false,
     message: "hello world!"
   }, act) =>
 {

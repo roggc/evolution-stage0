@@ -8,6 +8,7 @@ import {Provider} from 'react-redux'
 import {getStore} from '../redux/store/store'
 import App from '../components/app/render/app'
 import serialize from 'serialize-javascript'
+import {deserialize} from '../helpers/helpers'
 
 export const handleRender=(req, res)=> {
     let _store
@@ -15,7 +16,7 @@ export const handleRender=(req, res)=> {
     if(req.query.state)
     {
       const decoded= decodeURIComponent(req.query.state)
-      const state= JSON.parse(decoded)
+      const state= deserialize(decoded)
       _store= getStore({isClient:false}, state)
     }
     else

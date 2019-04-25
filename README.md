@@ -1,6 +1,6 @@
 ## evolution-stage0
 
-the app is an evolution in progress. no is in stage 0.
+the app is an evolution in progress. now is in stage 0.
 
 it's a javascript web app (both server and client).
 

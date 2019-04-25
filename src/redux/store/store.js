@@ -6,6 +6,7 @@ import reducer from '../reducer'
 import {environmentSet} from '../extra/environment/actions'
 import stateHistory from './middleware/stateHistory'
 import dataFetching from './middleware/dataFetching'
+import resetData from './middleware/resetData'
 
 export const getStore= (conf= {isClient:false}, state)=>
 {
@@ -18,16 +19,12 @@ export const getStore= (conf= {isClient:false}, state)=>
       state = window.__STATE__
       delete window.__STATE__
     }
-
-    // const store1= applyMiddleware(...middlewares)(createStore)(reducer)
-    // let state1= store1.getState()
-    // state1={...state1,...state}
     store= applyMiddleware(...middlewares)(createStore)(reducer, state)
     store.dispatch(environmentSet({isClient:true}))
   }
   else
   {
-    const middlewares = [thunk]
+    const middlewares = [thunk, resetData]
     store= applyMiddleware(...middlewares)(createStore)(reducer, state)
     if(state)
     {
